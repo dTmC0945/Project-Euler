@@ -2,15 +2,12 @@
 with open('Euler_13.txt') as file:
     lines = file.readlines()
 
-lines = list(map(lambda s: s.strip(), lines))
+mappedLines = list(map(lambda s: s.strip(), lines))
 
-intLines = list(map(int, lines))
+firstTen = [x[0:11] for x in mappedLines]
 
-print(intLines)
+intLines = list(map(int, firstTen))
 
-for x in intLines:
+output = str(sum([x for x in intLines]))
 
-    Array = [x]
-
-
-print(Array)
+tendigits = print(output[0:10])
