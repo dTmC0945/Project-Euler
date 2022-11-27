@@ -16,4 +16,3 @@ output = str(sum([x for x in intLines]))
 
 # print out the ten digits
 tendigits = print(output[0:10])
-
