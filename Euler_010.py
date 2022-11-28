@@ -1,21 +1,24 @@
-import math as m
+import numpy as np
 
 
-def primeFinder(n):
-    out = 0
-    for i in range(2, m.floor(n / 2)):
-        if n % i == 0 or n == 4:
-            out = 0
-            return 0
+def sievePrime(n):
+    array = np.arange(2, n)
 
-    if out == 0:
-        return n
+    tempSieve = [2]
 
-def primeUnder(n):
+    for value in range(2, int(np.floor(np.sqrt(n)))):
+        if tempSieve[value - 2] != value:
+            continue
+        else:
+            for x in range(len(array)):
+                if array[x] % value == 0 and array[x] != value:
+                    array[x] = 0
+                    tempSieve = array
 
-    array = [primeFinder(i) for i in range(2, n)]
+
+    #tempSieve = array[array != 0]
 
     return sum(array)
 
 
-print(primeUnder(20000))
+print(sievePrime(1000000))
