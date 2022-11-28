@@ -1,10 +1,20 @@
+# avoid recursion, wrote it in while loop
 def fibonacci(n):
-    if n == 1:
-        return 1
-    if n == 2:
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+    array = [1, 1] 
+
+    i = 2
+    while i < n:
+        array.append(array[i - 1] + array[i - 2])
+        i += 1
+
+    return array
 
 
-print(fibonacci(24))
+length, n = 1, 3
+
+while length < 1000:
+    fib = fibonacci(n)
+    length = len(str(fib[-1]))
+    n += 1
+
+print(n - 1)
