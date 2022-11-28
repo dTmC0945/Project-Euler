@@ -23,10 +23,11 @@ for a in range(len(collapse) - size):
     for b in range(size):
         window[b] = collapse[a + b]
 
-        intWin = list(map(int, window))
+    intWin = list(map(int, window))
 
-        mult = reduce(lambda x, y: x * y, intWin)
-        if mult > maxValue:
-            maxValue = mult
+    mult = reduce(lambda x, y: x * y, intWin)
+
+    if mult > maxValue:
+        maxValue = mult
 
 print(maxValue)
