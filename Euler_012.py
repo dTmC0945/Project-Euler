@@ -18,10 +18,12 @@ def triangleNumber(number):
     return sum(range(1, number + 1))
 
 
-div, value = 0, 0
+div, value, answer = 0, 0, 0
 
-while div <= 400:
+while div < 500:
     div = len(numbersThatDivide(triangleNumber(value)))
+    answer = value
     value += 1
 
+print(triangleNumber(answer))
 print("--- %s seconds ---" % (time.time() - start_time))
