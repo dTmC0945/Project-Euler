@@ -1,6 +1,6 @@
 # avoid recursion, wrote it in while loop
 def fibonacci(n):
-    array = [1, 1] 
+    array = [1, 1]
 
     i = 2
     while i < n:
