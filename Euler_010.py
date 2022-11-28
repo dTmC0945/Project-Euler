@@ -15,10 +15,7 @@ def sievePrime(n):
                     array[x] = 0
                     tempSieve = array
 
-
-    #tempSieve = array[array != 0]
-
     return sum(array)
 
 
-print(sievePrime(1000000))
+print(sievePrime(2000000))
