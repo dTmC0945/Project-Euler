@@ -25,7 +25,6 @@ def sievePrime(n):
 
 
 def divisor(n, nmax):
-
     array = np.zeros(nmax)
 
     for div in range(2, n + 1):
@@ -39,14 +38,12 @@ def divisor(n, nmax):
 
     return array
 
-power = [divisor(n, 20) for n in range(2,20)]
 
-prime = sievePrime(20)[sievePrime(20) != 0]
+power = [divisor(n, 20) for n in range(1, 20)]
+
+prime = np.insert(sievePrime(21), 0, [0, 0])
 
 print(prime)
 
-
-print(power[0][1])
-print(power)
 
 print("--- %s seconds ---" % (time.time() - start_time))

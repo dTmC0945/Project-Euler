@@ -11,10 +11,11 @@ def primeFinder(n):
 
     return n
 
+#def pandigital(n):
 
-looper = 9999999
+looper = 999999999
 
-while looper > 10**6:
+while looper > 10**8:
     intArray = [char for char in str(looper)]
     if len(intArray) == len(set(intArray)) and primeFinder(looper) != 0:
         print(looper)
