@@ -24,24 +24,31 @@ def sievePrime(n):
     return numberlist
 
 
+# checks whether a given number is prime
 def primeFinder(n):
-    for div in range(2, int(np.sqrt(n)) + 1):
+    for div in range(2, int(np.ceil(np.sqrt(n)))):
         if n % div == 0 and n != div:
             return 0
 
     return n
 
-limit = 1000
 
+# limit given in question
+limit = 100000
+
+# gather the array full of primes and removing the numbers
 primeList = sievePrime(limit)[sievePrime(limit) != 0]
 
-
+# initial sum of the primes (start with 2)
 total = primeList[0]
-for ind in range(1, len(primeList)):
-    cache = sum(primeList[0:ind])
-    if cache < 1000:
-        if primeFinder(cache) != 0:
-            print(cache)
 
-    else:
-        break
+for window in range(len(primeList), 1, -1):  # creates a window to sum up consecutive primes
+    for ind in range(1, len(primeList) - window):  # the indices
+        cache = sum(primeList[ind:ind + window])  # sums them up
+        if cache >= limit:  # checks if the value is bigger then limit
+            break  # if so terminate the loop
+        elif primeFinder(cache) != 0:  # else check if it is primes
+            print(cache)  # if so print it out
+            break  # break
+
+print("--- %s seconds ---" % (time.time() - start_time))
