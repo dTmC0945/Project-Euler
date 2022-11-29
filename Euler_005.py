@@ -1,32 +1,35 @@
-import numpy as np
-import time
-from functools import reduce
+import numpy as np  # import for np arrays
+import time  # import for time calculation
+from functools import reduce  # import for lambda calculations
 
-start_time = time.time()
+start_time = time.time()  # start the clock
 
 
+# use the sieve of eratosthenes to calculate primes under n
 def sievePrime(n):
-    array = np.arange(2, n)
+    numberlist = np.arange(2, n)  # generate the number list from 2 to number n
 
-    tempsieve = [2]
+    temp_sieve = [2]  # create the temporary sieve (starts with 2 and grows ... )
 
-    for value in range(2, int(np.floor(np.sqrt(n)))):
-        if tempsieve[value - 2] != value:
+    for value in range(2, int(np.ceil(np.sqrt(n)))):  # check till sqrt(n) [saves time immensely]
+        if temp_sieve[value - 2] != value:
             continue
         else:
-            for x in range(value, len(range(n)), value):
-                if array[x - 2] % value == 0 and array[x - 2] != value:
-                    array[x - 2] = 0
-                    tempsieve = array
+            for x in range(value, len(range(n)), value):  # check the values from beginning of the prime
+                # saves more time...
+                if numberlist[x - 2] % value == 0 and numberlist[x - 2] != value:
+                    numberlist[x - 2] = 0
+                    temp_sieve = numberlist
                 else:
                     continue
 
-    return array
+    return numberlist
 
 
+# produces a list of numbers that divides up to nmax. Every division counts as one in array.
 def divisor(n, nmax):
-    array = np.zeros(nmax)
-
+    array = np.zeros(nmax)  # generate a zero array size of nmax
+    # counts how many times a number, divides a number (i.e., 16 would be divisible by 2 4 times)
     for div in range(2, n + 1):
         upper = n
         while upper > 1:
@@ -38,26 +41,28 @@ def divisor(n, nmax):
 
     return array
 
+limit = 100
 
-power = np.asarray([divisor(n, 20) for n in range(1, 21)])
+# generate a 2D matrix of each number divisible by each other number up to a certain number
+power = np.asarray([divisor(n, limit) for n in range(1, limit + 1)])
+# find the maximum of each column
 max = power.max(axis=0, keepdims=True)
+# find prime numbers up to a certain value
+prime = np.insert(sievePrime(limit + 1), 0, [0])
 
-prime = np.insert(sievePrime(21), 0, [0])
-
-total = 0
 index = 0
-
-print(prime)
-print(max)
 total = []
 
-for value in range(0, 20):
+# take the power of each number with its corresponding prime value
+for number in range(0, limit):
     index = 0
-    if prime[value] != 0:
-        cache = pow(prime[value], max[0][value])
+    if prime[number] != 0:
+        cache = pow(prime[number], max[0][number])
         total.append(cache)
 
+print(total)
+# multiply all the values of the array
 mult = reduce(lambda x, y: x * y, total)
 
-print(mult)
+print("The smallest number divisible by %s is: %s" % (limit, int(mult)))
 print("--- %s seconds ---" % (time.time() - start_time))
