@@ -39,11 +39,25 @@ def divisor(n, nmax):
     return array
 
 
-power = [divisor(n, 20) for n in range(1, 20)]
+power = np.asarray([divisor(n, 20) for n in range(1, 21)])
+max = power.max(axis=0, keepdims=True)
 
-prime = np.insert(sievePrime(21), 0, [0, 0])
+prime = np.insert(sievePrime(21), 0, [0])
+
+total = 0
+index = 0
 
 print(prime)
+print(max)
+total = []
 
+for value in range(0, 20):
+    index = 0
+    if prime[value] != 0:
+        cache = pow(prime[value], max[0][value])
+        total.append(cache)
 
+mult = reduce(lambda x, y: x * y, total)
+
+print(mult)
 print("--- %s seconds ---" % (time.time() - start_time))
