@@ -12,21 +12,18 @@ def primeFinder(n):
     return n
 
 
-looper = 999999999
+looper = 9999999
 
-while looper > 100000000:
-    prime = primeFinder(looper)
-    if prime != 0:
-        intArray = [char for char in str(prime)]
-        if len(intArray) == len(set(intArray)):
-            print(prime)
-            looper -= 2
-        else:
-            looper -= 2
-            continue
-
+while looper > 10**6:
+    intArray = [char for char in str(looper)]
+    if len(intArray) == len(set(intArray)) and primeFinder(looper) != 0:
+        print(looper)
+        looper -= 2
+        break
     else:
         looper -= 2
-        continue
+        pass
+
+
 
 print("--- %s seconds ---" % (time.time() - start_time))
