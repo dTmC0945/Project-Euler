@@ -41,7 +41,7 @@ def divisor(n, nmax):
 
     return array
 
-limit = 100
+limit = 20
 
 # generate a 2D matrix of each number divisible by each other number up to a certain number
 power = np.asarray([divisor(n, limit) for n in range(1, limit + 1)])

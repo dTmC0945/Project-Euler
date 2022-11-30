@@ -5,8 +5,8 @@ import time  # import for time calculation
 
 start_time = time.time()  # start the clock
 
-
 # Average solve time (M1 Mac) - 0.72 sec
+
 
 # Sieve of Eratosthenes implementation
 def sievePrime(n):
