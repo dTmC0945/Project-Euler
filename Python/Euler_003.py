@@ -1,6 +1,6 @@
 # Project Euler Question 3 - Largest Prime Factor
 
-import numpy as np
+import numpy as np  # import for arrays and ceiling function
 import time  # import for time calculation
 
 start_time = time.time()  # start the clock
@@ -42,7 +42,6 @@ for index in primeList:
         max_prime = index
 
 print("The largest prime factor of the number 600851475143 is:", max_prime)
-
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
