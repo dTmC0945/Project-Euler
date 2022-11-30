@@ -4,6 +4,8 @@ import numpy as np  # import for ceiling function
 import time  # import for time calculation
 
 start_time = time.time()  # start the clock
+
+
 # Average solve time (M1 Mac) - 0.05 sec
 
 # function calculating the champernowne digits.
