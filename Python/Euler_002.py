@@ -4,8 +4,8 @@ import time  # import for time calculation
 
 start_time = time.time()  # start the clock
 
-
 # Average solve time (M1 Mac) - 0.00005 sec
+
 
 # Define the fibonacci function (tried avoiding recursion for speed purposes)
 def fibonacci(n):
