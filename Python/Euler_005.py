@@ -6,7 +6,6 @@ from functools import reduce  # import for lambda calculations
 
 start_time = time.time()  # start the clock
 
-
 # Average solve time (M1 Mac) - 0.0003 sec
 
 
