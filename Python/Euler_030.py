@@ -1,4 +1,4 @@
-# Project Euler Question 1 - Multiples of 3 or 5
+# Project Euler Question 1 - Digit fifth powers
 
 import time  # import for time calculation
 
