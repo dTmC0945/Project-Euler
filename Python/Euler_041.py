@@ -25,12 +25,13 @@ def sievePrime(n):
 
 
 def filter(array):
-    input = array.sort()
-    char_List = []
-    for ind in range(0, len(input)):
-        char_List.append(ord(input[ind]))
+    sorted_int = sorted(array)
 
-    return print(char_List)
+    for ind in range(0,len(sorted_int) - 1):
+        if sorted_int[ind + 1] - sorted_int[ind] != 1:
+            return 0
+
+    return array
 
 
 prime_list = sievePrime(7654321)
@@ -43,8 +44,8 @@ for prime in range(0, len(prime_list)):
     intArray = list(str(prime_list[prime]))
     if len(intArray) == 4 or len(intArray) == 7:
         if "0" not in intArray and len(intArray) == len(set(intArray)):
-            filter(intArray)
-            print(intArray)
+            print(filter(list(map(int, intArray))))
+
     else:
         continue
 
