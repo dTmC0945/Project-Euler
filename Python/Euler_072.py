@@ -26,22 +26,23 @@ def sievePrime(n):
 
     return array  # returns the sieve as output.
 
-number = 100000
+
+number = 100
 # Calculates primes up to 1000000 as given in question
 prime_list = sievePrime(number)
 
 prime_list = prime_list[prime_list != 0]
 
-
 int_list = np.arange(2, number + 1)
 
 for i in range(0, len(int_list)):
     for prime in prime_list:
-        if int_list[i] % prime == 0:
-             int_list[i] = int_list[i] * ( 1 - 1 / prime)
+        if prime > int_list[i]:
+            break
+        elif int_list[i] % prime == 0:
+            int_list[i] = int_list[i] * (1 - 1 / prime)
 
-
-#print(int_list)
+# print(int_list)
 # print(int_list)
 # # 41538
 # # 3039610753
