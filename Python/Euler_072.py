@@ -29,7 +29,7 @@ def sievePrime(n):
 
 
 # Calculates primes up to 1000000 as given in question
-prime_list = sievePrime(100000)
+prime_list = sievePrime(10000)
 
 prime_list = prime_list[prime_list != 0]
 
@@ -40,8 +40,6 @@ def eulerTotient(array, value):
     for ind in range(0, len(array)):
         if value < array[ind]:
             break
-        elif value == array[ind]:
-            return value - 1
         elif value % array[ind] == 0:
             temporary.append(1 - 1 / array[ind])
 
@@ -49,7 +47,7 @@ def eulerTotient(array, value):
 
 
 def primeDealer(array):
-    temporary = np.zeros(100000)
+    temporary = np.zeros(10000)
     for ind in array:
         prime = ind
         while ind < len(temporary):
@@ -61,17 +59,15 @@ def primeDealer(array):
 
 main_array = primeDealer(prime_list)
 
-# answer = sum(map(lambda x: eulerTotient(prime_list, x), range(2, 10)))
 for ind in range(6, len(main_array)):
-    temporary = eulerTotient(prime_list, ind)
-    while ind < len(main_array):
-        if main_array[ind] != 0:
-            break
-        else:
+    if main_array[ind] == 0:
+        temporary = eulerTotient(prime_list, ind)
+        while ind < len(main_array):
             main_array[ind] = ind * temporary
-        ind *= ind
+            ind *= ind
+            print(ind)
 
-
+print(sum(main_array))
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
