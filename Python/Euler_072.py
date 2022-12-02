@@ -3,7 +3,6 @@
 import functools
 import numpy as np  # import for np arrays and ceiling function
 import time  # import for time calculation
-import math
 
 start_time = time.time()  # start the clock
 
@@ -29,25 +28,29 @@ def sievePrime(n):
 
 
 # Calculates primes up to 1000000 as given in question
-prime_list = sievePrime(10000)
+prime_list = sievePrime(300000)
 
 prime_list = prime_list[prime_list != 0]
 
 
+# 41538
+# 3039610753
+
 # Calculates the euler Totient Function
 def eulerTotient(array, value):
     temporary = []
-    for ind in range(0, len(array)):
+    for ind in range(0, 41538):
         if value < array[ind]:
             break
         elif value % array[ind] == 0:
             temporary.append(1 - 1 / array[ind])
+            value = value / array[ind]
 
     return functools.reduce(lambda x, y: x * y, temporary)
 
-
+# 10 - 34 - 70
 def primeDealer(array):
-    temporary = np.zeros(10000)
+    temporary = np.zeros(300000)
     for ind in array:
         prime = ind
         while ind < len(temporary):
@@ -65,7 +68,6 @@ for ind in range(6, len(main_array)):
         while ind < len(main_array):
             main_array[ind] = ind * temporary
             ind *= ind
-            print(ind)
 
 print(sum(main_array))
 print("--- %s seconds ---" % (time.time() - start_time))
