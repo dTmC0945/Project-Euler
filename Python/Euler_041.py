@@ -24,19 +24,29 @@ def sievePrime(n):
     return array  # returns the sieve as output.
 
 
-prime_list = sievePrime(9999999)
+def filter(array):
+    input = array.sort()
+    char_List = []
+    for ind in range(0, len(input)):
+        char_List.append(ord(input[ind]))
+
+    return print(char_List)
+
+
+prime_list = sievePrime(7654321)
 
 prime_list = prime_list[prime_list != 0]
 
 print(prime_list)
 
 for prime in range(0, len(prime_list)):
-    intArray = [char for char in prime_list[prime]]
-    while len(intArray) == 4 or len(intArray) == 7:
-        if len(intArray) == len(set(intArray)):
+    intArray = list(str(prime_list[prime]))
+    if len(intArray) == 4 or len(intArray) == 7:
+        if "0" not in intArray and len(intArray) == len(set(intArray)):
+            filter(intArray)
             print(intArray)
-
-
+    else:
+        continue
 
 # while looper > 10 ** 8:
 #     intArray = [char for char in str(looper)]
