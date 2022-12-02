@@ -37,16 +37,17 @@ prime_list = prime_list[prime_list != 0]
 def eulerTotient(array, value):
     temporary = []
     for ind in range(0, len(prime_list)):
-        if value in array:
+        if value == prime_list[ind]:
             return value - 1
-        elif value % prime_list[ind] == 0:
-            temporary.append(1 - 1 / prime_list[ind])
+        elif value > prime_list[ind]:
+            if value % prime_list[ind] == 0:
+                temporary.append(1 - 1 / prime_list[ind])
+        else:
+            break
     return int(value * math.prod(temporary))
 
 
-print(eulerTotient(prime_list, 89))
-
-answer = sum(map(lambda x: eulerTotient(prime_list, x), range(2, 9)))
+answer = sum(map(lambda x: eulerTotient(prime_list, x), range(2, 100)))
 
 print(answer)
 
