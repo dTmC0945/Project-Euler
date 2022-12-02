@@ -7,6 +7,8 @@ import time  # import for time calculation
 start_time = time.time()  # start the clock
 
 
+# Average solve time (M1 Mac) - 1.56 sec
+
 # Sieve of Eratosthenes implementation
 def sievePrime(n):
     array = np.arange(2, n)  # define the array of numbers up to the limit n
@@ -27,61 +29,21 @@ def sievePrime(n):
     return array  # returns the sieve as output.
 
 
-number = 100
+number = 1000000  # given number
+
 # Calculates primes up to 1000000 as given in question
 prime_list = sievePrime(number)
 
-prime_list = prime_list[prime_list != 0]
+prime_list = prime_list[prime_list != 0]  # removes the unnecessary zeroes
 
-int_list = np.arange(2, number + 1)
+int_list = np.arange(0, number + 1)  # create an integer list to sieve
 
-for i in range(0, len(int_list)):
-    for prime in prime_list:
-        if prime > int_list[i]:
-            break
-        elif int_list[i] % prime == 0:
-            int_list[i] = int_list[i] * (1 - 1 / prime)
+# Here the loops basically traverses the integer list and multiplies by 1 - 1/p if it divides with it
+for prime in prime_list:
+    for i in range(0, len(int_list), prime):
+        int_list[i] = int_list[i] * (1 - 1 / prime)
 
-# print(int_list)
-# print(int_list)
-# # 41538
-# # 3039610753
-#
-# # Calculates the euler Totient Function
-# def eulerTotient(array, value):
-#     temporary = []
-#     for ind in range(0, 41538):
-#         if value < array[ind]:
-#             break
-#         elif value % array[ind] == 0:
-#             temporary.append(1 - 1 / array[ind])
-#             value = value / array[ind]
-#
-#     return functools.reduce(lambda x, y: x * y, temporary)
-#
-#
-#
-# def primeDealer(array):
-#     temporary = np.zeros(number)
-#     for ind in array:
-#         prime = ind
-#         while ind < len(temporary):
-#             temporary[ind] = (1 - 1 / prime) * ind
-#             ind *= ind
-#
-#     return temporary
-#
-#
-# main_array = primeDealer(prime_list)
-#
-# for ind in range(6, len(main_array)):
-#     if main_array[ind] == 0:
-#         temporary = eulerTotient(prime_list, ind)
-#         while ind < len(main_array):
-#             main_array[ind] = ind * temporary
-#             ind *= ind
-#
-# print(sum(main_array))
+print(sum(int_list) - 1)  # remove the phi(1) as it is not counted towards the question.
 print("--- %s seconds ---" % (time.time() - start_time))
-#
+
 # # End of code
