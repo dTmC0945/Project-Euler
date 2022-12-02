@@ -1,13 +1,12 @@
 # Project Euler Question 72 - Counting Fractions
 
-import functools
 import numpy as np  # import for np arrays and ceiling function
 import time  # import for time calculation
 
 start_time = time.time()  # start the clock
 
-
 # Average solve time (M1 Mac) - 1.56 sec
+
 
 # Sieve of Eratosthenes implementation
 def sievePrime(n):
