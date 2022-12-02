@@ -1,6 +1,6 @@
 # Project Euler Question 72 - Counting Fractions
 
-from functools import lru_cache
+import functools
 import numpy as np  # import for np arrays and ceiling function
 import time  # import for time calculation
 import math
@@ -29,27 +29,48 @@ def sievePrime(n):
 
 
 # Calculates primes up to 1000000 as given in question
-prime_list = sievePrime(1000000)
+prime_list = sievePrime(100000)
 
 prime_list = prime_list[prime_list != 0]
+
 
 # Calculates the euler Totient Function
 def eulerTotient(array, value):
     temporary = []
-    for ind in range(0, len(prime_list)):
-        if value == prime_list[ind]:
-            return value - 1
-        elif value > prime_list[ind]:
-            if value % prime_list[ind] == 0:
-                temporary.append(1 - 1 / prime_list[ind])
-        else:
+    for ind in range(0, len(array)):
+        if value < array[ind]:
             break
-    return int(value * math.prod(temporary))
+        elif value == array[ind]:
+            return value - 1
+        elif value % array[ind] == 0:
+            temporary.append(1 - 1 / array[ind])
+
+    return functools.reduce(lambda x, y: x * y, temporary)
 
 
-answer = sum(map(lambda x: eulerTotient(prime_list, x), range(2, 100)))
+def primeDealer(array):
+    temporary = np.zeros(100000)
+    for ind in array:
+        prime = ind
+        while ind < len(temporary):
+            temporary[ind] = (1 - 1 / prime) * ind
+            ind *= ind
 
-print(answer)
+    return temporary
+
+
+main_array = primeDealer(prime_list)
+
+# answer = sum(map(lambda x: eulerTotient(prime_list, x), range(2, 10)))
+for ind in range(6, len(main_array)):
+    temporary = eulerTotient(prime_list, ind)
+    while ind < len(main_array):
+        if main_array[ind] != 0:
+            break
+        else:
+            main_array[ind] = ind * temporary
+        ind *= ind
+
 
 print("--- %s seconds ---" % (time.time() - start_time))
 
