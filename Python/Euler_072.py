@@ -26,50 +26,61 @@ def sievePrime(n):
 
     return array  # returns the sieve as output.
 
-
+number = 100000
 # Calculates primes up to 1000000 as given in question
-prime_list = sievePrime(300000)
+prime_list = sievePrime(number)
 
 prime_list = prime_list[prime_list != 0]
 
 
-# 41538
-# 3039610753
+int_list = np.arange(2, number + 1)
 
-# Calculates the euler Totient Function
-def eulerTotient(array, value):
-    temporary = []
-    for ind in range(0, 41538):
-        if value < array[ind]:
-            break
-        elif value % array[ind] == 0:
-            temporary.append(1 - 1 / array[ind])
-            value = value / array[ind]
-
-    return functools.reduce(lambda x, y: x * y, temporary)
-
-# 10 - 34 - 70
-def primeDealer(array):
-    temporary = np.zeros(300000)
-    for ind in array:
-        prime = ind
-        while ind < len(temporary):
-            temporary[ind] = (1 - 1 / prime) * ind
-            ind *= ind
-
-    return temporary
+for i in range(0, len(int_list)):
+    for prime in prime_list:
+        if int_list[i] % prime == 0:
+             int_list[i] = int_list[i] * ( 1 - 1 / prime)
 
 
-main_array = primeDealer(prime_list)
-
-for ind in range(6, len(main_array)):
-    if main_array[ind] == 0:
-        temporary = eulerTotient(prime_list, ind)
-        while ind < len(main_array):
-            main_array[ind] = ind * temporary
-            ind *= ind
-
-print(sum(main_array))
+#print(int_list)
+# print(int_list)
+# # 41538
+# # 3039610753
+#
+# # Calculates the euler Totient Function
+# def eulerTotient(array, value):
+#     temporary = []
+#     for ind in range(0, 41538):
+#         if value < array[ind]:
+#             break
+#         elif value % array[ind] == 0:
+#             temporary.append(1 - 1 / array[ind])
+#             value = value / array[ind]
+#
+#     return functools.reduce(lambda x, y: x * y, temporary)
+#
+#
+#
+# def primeDealer(array):
+#     temporary = np.zeros(number)
+#     for ind in array:
+#         prime = ind
+#         while ind < len(temporary):
+#             temporary[ind] = (1 - 1 / prime) * ind
+#             ind *= ind
+#
+#     return temporary
+#
+#
+# main_array = primeDealer(prime_list)
+#
+# for ind in range(6, len(main_array)):
+#     if main_array[ind] == 0:
+#         temporary = eulerTotient(prime_list, ind)
+#         while ind < len(main_array):
+#             main_array[ind] = ind * temporary
+#             ind *= ind
+#
+# print(sum(main_array))
 print("--- %s seconds ---" % (time.time() - start_time))
-
-# End of code
+#
+# # End of code
