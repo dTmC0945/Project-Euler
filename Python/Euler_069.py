@@ -1,7 +1,7 @@
 # Project Euler Question 69 - Totient Maximum
 
-import numpy as np
-from math import gcd # importing built in gcd for speed
+import numpy as np  # importing for numpy arrays, sqrt and ceiling function
+from math import gcd  # importing built in gcd for speed
 import time  # import for time calculation
 
 start_time = time.time()  # start the clock
@@ -28,12 +28,15 @@ def sievePrime(n):
 
     return array  # returns the sieve as output.
 
+
 print(len(sievePrime(1000000)[sievePrime(1000000) != 0]))
+
 
 # Calculating euler Totient function
 def eulerTotient(n):
     # returns the sum of the numbers that are co-prime with entered number n.
-    return sum(map(lambda x: 1 if(gcd(n, x) == 1) else 0, range(1, n)))
+    return sum(map(lambda x: 1 if (gcd(n, x) == 1) else 0, range(1, n)))
+
 
 # max_Value = 0
 # max_Number = 0
