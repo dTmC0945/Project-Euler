@@ -7,7 +7,7 @@ import time  # import for time calculation
 start_time = time.time()  # start the clock
 
 
-# Average solve time (M1 Mac) - 1.1 sec
+# Average solve time (M1 Mac) - 1.6 sec
 
 # Sieve of Eratosthenes implementation
 def sievePrime(n):
@@ -29,11 +29,11 @@ def sievePrime(n):
     return array  # returns the sieve as output.
 
 
-number = 10  # given number
+number = 1000000  # given number
 
 # Calculates primes up to 1000000 as given in question
 prime_list = sievePrime(number)
-
+output = []  # empty array to store n / phi(n)
 prime_list = prime_list[prime_list != 0]  # removes the unnecessary zeroes
 
 int_list = np.arange(0, number + 1)  # create an integer list to sieve
@@ -41,9 +41,18 @@ int_list = np.arange(0, number + 1)  # create an integer list to sieve
 # Here the loops basically traverses the integer list and multiplies by 1 - 1/p if it divides with it
 for prime in prime_list:
     for i in range(0, len(int_list), prime):
-        int_list[i] = int_list[i] * (1 - 1 / prime)
+        int_list[i] *= (prime - 1) / prime
 
-print(int_list)
+# Divides the calculated array with n to produce the n/phi(n) expression
+for val in range(0, len(int_list)):
+    if val != 0:
+        output.append(val / int_list[val])
+
+# Finds the maximum index of an array using in-built functions.
+index_min = max(range(len(output)), key=output.__getitem__)
+
+# Add 1 because you started counting from 1 not 0.
+print("The value which n / phi(n) is a maximum is:", index_min + 1)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
