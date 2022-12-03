@@ -29,7 +29,8 @@ with open('Euler_059.txt') as file:
     lines = file.readlines()
 
 encrypted_List = list(map(int, lines[0].split(",")))
-encrypted_Char = [chr(encrypted_List[n]) for n in range(0,len(encrypted_List))]
+encrypted_Char = [chr(encrypted_List[n]) for n in range(0, len(encrypted_List))]
+print(encrypted_Char)
 #print(encrypted_Char)
 binary_array = []
 
@@ -71,16 +72,16 @@ def binaryMaker(key_text, value_text):
 
     binary_array = "".join(binary_array)
 
-    return binary, binary_array
+    repeat = int(len(binary_array) / len(binary))
 
+    keyys = binary * repeat
+    return keyys, binary_array
 
-text, key = binaryMaker("k", "*")
+key, text = binaryMaker("god", encrypted_Char)
 
 encrypt = xorEncryption(text, key)
 
 print(decoding(encrypt))
-# repeat = int(len(binary_array) / len(binary))
 
-# keyys = binary * repeat
 
 # print(decoding(Encryption(binary_array, keyys)))
