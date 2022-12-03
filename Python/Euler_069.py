@@ -29,26 +29,20 @@ def sievePrime(n):
     return array  # returns the sieve as output.
 
 
-print(len(sievePrime(1000000)[sievePrime(1000000) != 0]))
+number = 1000000  # given number
 
+# Calculates primes up to 1000000 as given in question
+prime_list = sievePrime(number)
 
-# Calculating euler Totient function
-def eulerTotient(n):
-    # returns the sum of the numbers that are co-prime with entered number n.
-    return sum(map(lambda x: 1 if (gcd(n, x) == 1) else 0, range(1, n)))
+prime_list = prime_list[prime_list != 0]  # removes the unnecessary zeroes
 
+int_list = np.arange(0, number + 1)  # create an integer list to sieve
 
-# max_Value = 0
-# max_Number = 0
-# for number in range(2, 100000, 2):
-#     if (number / eulerTotient(number)) > max_Value:
-#         max_Value = number / eulerTotient(number)
-#         max_Number = number
-#     else:
-#         continue
+# Here the loops basically traverses the integer list and multiplies by 1 - 1/p if it divides with it
+for prime in prime_list:
+    for i in range(0, len(int_list), prime):
+        int_list[i] = int_list[i] * (1 - 1 / prime)
 
-
-# print(max_Value, max_Number)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
