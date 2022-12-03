@@ -29,7 +29,7 @@ def sievePrime(n):
     return array  # returns the sieve as output.
 
 
-number = 1000000  # given number
+number = 10  # given number
 
 # Calculates primes up to 1000000 as given in question
 prime_list = sievePrime(number)
@@ -43,6 +43,7 @@ for prime in prime_list:
     for i in range(0, len(int_list), prime):
         int_list[i] = int_list[i] * (1 - 1 / prime)
 
+print(int_list)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
