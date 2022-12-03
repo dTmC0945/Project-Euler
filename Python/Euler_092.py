@@ -9,7 +9,7 @@ def squareDigitNumber(n):
 
 n = 0
 
-for num in range(1, 10000000):
+for num in range(1, 1000):
     while num != 1 or num != 89:
         num = squareDigitNumber(num)
         if num == 89:
