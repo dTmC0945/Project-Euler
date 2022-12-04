@@ -27,15 +27,16 @@ def triangleNumber(number):
 
 # Declare the empty variables
 div, value, answer = 0, 0, 0
-limit = 500 # value given in the question
+limit = 500  # value given in the question
 
 # Finds the triangle number that has more than 500 divisors
+# Loop breaks just after limit is surpassed.
 while div < limit:
     div = len(numbersThatDivide(triangleNumber(value)))
     answer = value
     value += 1
 
-print(triangleNumber(answer))
+print("The triangle number that has more than 500 divisors is:", triangleNumber(answer))
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
