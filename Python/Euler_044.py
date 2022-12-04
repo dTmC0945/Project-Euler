@@ -12,6 +12,10 @@ def pentagonalNumber(number):
     return number * (3 * number - 1) / 2
 
 
-array = [pentagonalNumber(number) for number in range(1, 1000)]
+array = [pentagonalNumber(number) for number in range(1, 10000)]
 
+for ind in range(0, len(array)-1):
+    for win in range(1, len(array) - ind):
+        if array[ind] + array[ind + win] in set(array):
+            print(array[ind], array[ind + win])
 
