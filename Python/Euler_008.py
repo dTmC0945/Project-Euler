@@ -30,14 +30,17 @@ window = np.zeros(number)
 
 maxValue = 0  # initial maximum value for the digit products
 
+# moves the window each iteration and takes in the values.
 for a in range(len(collapse) - number):
     for b in range(number):
         window[b] = collapse[a + b]
 
     intWin = list(map(int, window))
 
+    # multiplies the values using lambda reduce function
     mult = reduce(lambda x, y: x * y, intWin)
 
+    # if the multiplication is bigger save it a maxValue
     if mult > maxValue:
         maxValue = mult
 
