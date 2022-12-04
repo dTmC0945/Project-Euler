@@ -1,4 +1,4 @@
-# Project Euler Question 1 - Lattice Paths
+# Project Euler Question 15 - Lattice Paths
 
 import time  # import for time calculation
 

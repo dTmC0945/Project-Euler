@@ -29,7 +29,6 @@ while limit < 4000000:  # if any fibonacci number is reached break the loop
     index += 1
 
 print("The sum of all even fibonacci numbers under 4.000.000 is:", total)
-
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
