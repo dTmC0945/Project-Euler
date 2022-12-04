@@ -7,7 +7,7 @@ from functools import reduce  # import for lambda calculations
 start_time = time.time()  # start the clock
 
 
-# Average solve time (M1 Mac) - 0.0003 sec
+# Average solve time (M1 Mac) - 0.15 sec
 
 
 # Sieve of Eratosthenes implementation
@@ -32,6 +32,13 @@ def sievePrime(n):
 
 number = 10001  # number given in question
 
-prime_limit = number / np.log(number)
+prime_list = sievePrime(200000)  # get the list of primes
 
-sievePrime()
+prime_list = prime_list[prime_list != 0]  # remove the zeroes from the array
+
+answer = prime_list[number - 1]  # retrieve the required number
+
+print("The prime no. %s is: %s" % (number, answer))
+print("--- %s seconds ---" % (time.time() - start_time))
+
+# End of code
