@@ -11,6 +11,7 @@ start_time = time.time()  # start the clock
 def sumSquare(n):
     return sum(map(lambda x: pow(x, 2), range(n + 1)))
 
+
 # Calculate the square of the sum of numbers up to n
 def squareSum(n):
     return pow(sum(map(lambda x: x, range(n + 1))), 2)
