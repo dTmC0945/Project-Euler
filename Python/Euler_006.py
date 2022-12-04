@@ -4,6 +4,7 @@ import time  # import for time calculation
 
 start_time = time.time()  # start the clock
 
+
 # Average solve time (M1 Mac) - 0.00006 sec
 
 
@@ -15,7 +16,7 @@ def squareSum(n):
     return pow(sum(map(lambda x: x, range(n + 1))), 2)
 
 
-number = 100 # number given in question.
+number = 100  # number given in question.
 
 difference = squareSum(number) - sumSquare(number)
 
