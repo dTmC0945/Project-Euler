@@ -14,7 +14,6 @@ for index in range(1, 1000):
         total = index + total
 
 print("The sum of all the multiples of 3 or 5 below 1000 is:", total)
-
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code

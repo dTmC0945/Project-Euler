@@ -1,5 +1,12 @@
-from functools import reduce
-import numpy as np
+# Project Euler Question 8 - Largest product in a series
+
+from functools import reduce # for the lambda product function
+import numpy as np #import of the zeros array
+import time  # import for time calculation
+
+start_time = time.time()  # start the clock
+
+# Average solve time (M1 Mac) - 0.0001 sec
 
 # open the textfile
 with open('Text Files/Euler_008.txt') as file:
@@ -15,7 +22,9 @@ for ls in mappedLines:
 
 collapse = sum(p, [])  # collapsing of matrix
 
-window = np.zeros(13)
+number = 13
+
+window = np.zeros(number)
 size = len(window)
 
 maxValue = 0
@@ -30,4 +39,8 @@ for a in range(len(collapse) - size):
     if mult > maxValue:
         maxValue = mult
 
-print(maxValue)
+
+print("The largest product of the %s digits is: %s" %(number, maxValue))
+print("--- %s seconds ---" % (time.time() - start_time))
+
+# End of code
