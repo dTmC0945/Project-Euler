@@ -4,7 +4,7 @@ import time  # import for time calculation
 start_time = time.time()  # start the clock
 
 # open the textfile
-with open('Euler_011.txt') as file:
+with open('Text Files/Euler_011.txt') as file:
     lines = file.readlines()
 
 # remove the \n

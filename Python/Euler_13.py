@@ -1,5 +1,5 @@
 # open the textfile
-with open('Euler_13.txt') as file:
+with open('Text Files/Euler_13.txt') as file:
     lines = file.readlines()
 
 # remove the \n from each line

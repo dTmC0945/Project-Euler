@@ -25,7 +25,7 @@ def decoding(binary_value):
 
 
 # open the textfile
-with open('Euler_059.txt') as file:
+with open('Text Files/Euler_059.txt') as file:
     lines = file.readlines()
 
 encrypted_List = list(map(int, lines[0].split(",")))
