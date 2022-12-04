@@ -1,4 +1,4 @@
-# Project Euler Question 1 - Multiples of 3 or 5
+# Project Euler Question 14 - Longest Collatz Sequence
 
 import time  # import for time calculation
 
