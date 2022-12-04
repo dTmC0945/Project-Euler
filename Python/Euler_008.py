@@ -2,7 +2,7 @@ from functools import reduce
 import numpy as np
 
 # open the textfile
-with open('Euler_8.txt') as file:
+with open('Text Files/Euler_008.txt') as file:
     lines = file.readlines()
 
 # remove the \n from each line

@@ -3,7 +3,7 @@ import time  # import for time calculation
 start_time = time.time()  # start the clock
 
 # open the textfile
-with open('Euler_022.txt') as file:
+with open('Text Files/Euler_022.txt') as file:
     lines = file.readlines()
 
 # separate each name with comma (,)
