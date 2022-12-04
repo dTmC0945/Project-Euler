@@ -1,4 +1,4 @@
-# Project Euler Question 12 - Highly divisible triangular Number
+# Project Euler Question 45 - Triangular, pentagonal and hexagonal
 
 import time  # import for time calculation
 
