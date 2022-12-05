@@ -14,15 +14,15 @@ p_squares = perfectSquare(1000)
 list = np.arange(2, 1000)
 
 filtered_list = set(list) - set(p_squares)
-
+filtered_list = [61]
 max_x = 0
 max_Value = 0
 for D in filtered_list:
     x, y = 1, 1
     while True:
         eq = x ** 2 - D * y ** 2
-        if x > 40000:
-            break
+        print(eq)
+
         if eq > 1:
             y += 1
         elif eq < 1:
@@ -35,4 +35,4 @@ for D in filtered_list:
         max_x = x
         max_Value = D
 
-print(D)
+print(max_Value, max_x)
