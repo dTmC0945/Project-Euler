@@ -1,16 +1,28 @@
+# Project Euler Question 17 - Number letter counts
 
-def number2text(n):
-    number_dict = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
-                   "eleven": 11, "twelve": 12, "thirteen": 13, "twenty": 20, "thirty": 30, "fourty": 40, "fifty": 50,
-                   "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90, "one hundred": 100}
-    number_value = list(number_dict.values())
-    number_text = list(number_dict.keys())
+import inflect  # import for number to text converter
+import time  # import for time calculation
 
-    for index in range(0,len(number_value)):
-        if number_value[index] == n:
-            output = number_text[index]
+start_time = time.time()  # start the clock
 
-    return output
+# Average solve time (M1 Mac) - 0.035 sec
 
 
-print(number2text(21))
+p = inflect.engine()  # initiate the "inflect" module
+
+count = []  # initialise the array to put the values
+
+for number in range(1, 1001):
+    # convert the number into text
+    words = p.number_to_words(number)
+
+    # remove special characters
+    words_filtered = ''.join(char for char in words if char.isalnum())
+
+    # append the values to an array
+    count.append(len(words_filtered))
+
+print("The sum is %s" % sum(count))
+print("--- %s seconds ---" % (time.time() - start_time))
+
+# End of Code
