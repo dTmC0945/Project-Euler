@@ -31,7 +31,6 @@ for a in range(99, 1000):  # checks all the 3-digit numbers for number a
             bigValue = number
 
 print("The largest palindrome made from the product of two 3-digit numbers is:", bigValue)
-
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code

@@ -5,7 +5,7 @@ import time  # import for time calculation
 start_time = time.time()  # start the clock
 
 
-# Average solve time (M1 Mac) - 0.000024 sec
+# Average solve time (M1 Mac) - 0.0001 sec
 
 # factorial function
 def factorial(n):
