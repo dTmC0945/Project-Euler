@@ -15,3 +15,16 @@ Questions ------------------------------------------------
 001 - Multiples of 3 or 5 (0.0001 sec)
 
 002 - Even Fibonacci Numbers (0.00004 sec)
+
+003 - The Largest Prime Factor (0.72 sec)
+
+004 - Largest Palindrome Product (0.4 sec)
+
+005 - Smallest Multiple (0.0003 sec)
+
+006 - Sum Square Difference (0.00006 sec)
+
+007 - 10001st Prime (0.15 sec)
+
+008 - The Largest Product in a Series(0.006 sec)
+
