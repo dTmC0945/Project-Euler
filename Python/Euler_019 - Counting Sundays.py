@@ -5,7 +5,7 @@ import time  # import for time calculation
 
 start_time = time.time()  # start the clock
 
-# Average solve time (M1 Mac) - 1 sec
+# Average solve time (M1 Mac) - 0.0009 sec
 
 
 count = 0  # set initial counting value
@@ -17,7 +17,7 @@ for year in range(1901, 2001):  # loops from year 1901 to 2001
             count = count + 1
 
 
-print("The largest palindrome made from the product of two 3-digit numbers is:", count)
+print("The number of sundays between 1901 to 2001 is:", count)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # End of code
