@@ -17,3 +17,18 @@ print(mp.sqrt(23))
 array = Fraction(float(mp.sqrt(23)))
 
 print(continuedFraction(array.numerator, array.denominator))
+
+
+expansion = [1]
+it = 1
+clock = 0
+for i in range(1, 110):
+    if clock == 0:
+        expansion.append(2 * it)
+        it += 1
+        clock = 2
+    if clock != 0:
+        expansion.append(1)
+        clock -= 1
+print(expansion)
+print(2 + fractionalSum(3, expansion))
