@@ -1,35 +1,19 @@
+import numpy as np
 from fractions import Fraction
+import mpmath as mp
 
+mp.dps = 1000
 
-def fractionalSum(number, array):
-    def inside(index, place):
-        if place >= 0:
-            return Fraction(1, index + place)
-        else:
-            return Fraction(1, index)
+def continuedFraction(n, d):
+    """Return the terms of the continued fraction when n is the numerator
+and d the divisor as a list"""
+    if d == 0: return []         # Ok it is finished
+    q = n//d                     # compute the integer quotient
+    r = n - q*d                  # the rest
+    return [q] + continuedFraction(d, r)        # and recurse...
 
-    if number == 0:
-        return 0
-    elif number == 1:
-        return inside(array[number - 1], 0)
-    elif number == 2:
-        return inside(1, fractionalSum(number - 1, array))
-    elif number == 88:
-        return inside(array[0], inside(array[1], inside(array[2], inside(array[3], inside(array[4], 0)))))
-    else:
-        return inside(fractionalSum(number - 2, array), inside(fractionalSum(number - 1, array), 0))
+print(mp.sqrt(23))
 
+array = Fraction(float(mp.sqrt(23)))
 
-expansion = [1]
-it = 1
-clock = 0
-for i in range(1, 110):
-    if clock == 0:
-        expansion.append(2 * it)
-        it += 1
-        clock = 2
-    if clock != 0:
-        expansion.append(1)
-        clock -= 1
-print(expansion)
-print(2 + fractionalSum(3, expansion))
+print(continuedFraction(array.numerator, array.denominator))

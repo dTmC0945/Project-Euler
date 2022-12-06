@@ -1,5 +1,8 @@
 import numpy as np
 from fractions import Fraction
+import mpmath as mp
+
+mp.dps = 1000
 
 def continuedFraction(n, d):
     """Return the terms of the continued fraction when n is the numerator
@@ -9,6 +12,8 @@ and d the divisor as a list"""
     r = n - q*d                  # the rest
     return [q] + continuedFraction(d, r)        # and recurse...
 
-print(Fraction(np.sqrt(23)))
+print(mp.sqrt(23))
 
-print(continuedFraction(np.sqrt(23), 10))
+array = Fraction(float(mp.sqrt(23)))
+
+print(continuedFraction(array.numerator, array.denominator))
