@@ -4,9 +4,11 @@ import mpmath as mp
 
 mp.dps = 1000
 
-def continuedFraction(n, d):
+
+def continuedFraction(n, d, rep):
     """Return the terms of the continued fraction when n is the numerator
 and d the divisor as a list"""
+
     if d == 0: return []         # Ok it is finished
     q = n//d                     # compute the integer quotient
     r = n - q*d                  # the rest
@@ -31,4 +33,4 @@ for i in range(1, 110):
         expansion.append(1)
         clock -= 1
 print(expansion)
-print(2 + fractionalSum(3, expansion))
+
