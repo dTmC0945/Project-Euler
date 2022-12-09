@@ -14,16 +14,17 @@ def f(x, max_depth):
     if x == max_depth:
         return 0
     else:
-        return 1 / (2 + f(x + 1, max_depth))
+        return Decimal(1 / (2 + f(x + 1, max_depth)))
 
 count = 0
 
-for depth in range(1,101):
-    sqrt2 = 1 + f(1, depth)
+for depth in range(1,1001):
+    sqrt2 = Decimal(1 + f(1, depth))
+    print(sqrt2)
 
     numerator = Fraction(sqrt2).limit_denominator().numerator
     denominator = Fraction(sqrt2).limit_denominator().denominator
-    print(Decimal(sqrt2))
+
     if digitCounter(numerator) > digitCounter(denominator):
         count += 1
     else:
