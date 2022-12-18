@@ -26,7 +26,8 @@ def createTree(array):
         if len(values) == 1:
             root = Node(text)
         else:
-            node_list.append(Node(text))
+            for numbers in values:
+                node_list.append(Node(numbers))
 
     return node_list
 
