@@ -4,5 +4,30 @@ with open('Text Files/Euler_018.txt') as file:
 
 mappedLines = list(map(lambda s: s.strip(), lines))
 
-for text in mappedLines:
-    print(text.split())
+
+
+
+root = None
+
+
+class Node:
+    def __init__(self, value):
+        self.left = None
+        self.right = None
+        self.value = value
+
+
+def createTree(array):
+    node_list = []
+    global root
+
+    for text in array:
+        values = text.split()
+        if len(values) == 1:
+            root = Node(text)
+        else:
+            node_list.append(Node(text))
+
+    return node_list
+
+print(createTree(mappedLines))
